@@ -12,7 +12,7 @@ class TestHMTLNode(unittest.TestCase):
     def test_props(self):
         node1 = HTMLNode("a", "click here to go to a cool website", None, {"href": "https://minimumviable.website", "target": "_blank"})
         node1a = node1.props_to_html()
-        node2 = 'href="https://minimumviable.website" target="_blank"'
+        node2 = ' href="https://minimumviable.website" target="_blank"'
         self.assertEqual(node1a, node2)
 
     def test_none(self):
@@ -31,6 +31,26 @@ class TestHMTLNode(unittest.TestCase):
         leaf2 = '<a href="https://minimumviable.website">click this link!</a>'
         self.assertEqual(leaf1.to_html(), leaf2)
 
+    def test_to_html_with_children(self):
+        child_node = LeafNode("span", "child")
+        parent_node = ParentNode("div", [child_node])
+        self.assertEqual(parent_node.to_html(), "<div><span>child</span></div>")
+
+    def test_to_html_with_grandchildren(self):
+        grandchild_node = LeafNode("b", "grandchild")
+        child_node = ParentNode("span", [grandchild_node])
+        parent_node = ParentNode("div", [child_node])
+        self.assertEqual(
+            parent_node.to_html(),
+            "<div><span><b>grandchild</b></span></div>",
+        )
+
+    def test_noteq_parents(self):
+        cn_1 = LeafNode("td", "table")
+        cn_2 = LeafNode("td", "item2")
+        pn_1 = LeafNode("tr", [cn_1, cn_2])
+        pn_2 = LeafNode("tr", [cn_2, cn_1])
+        self.assertNotEqual(pn_1, pn_2)
 
 if __name__ == "__main__":
     unittest.main()
