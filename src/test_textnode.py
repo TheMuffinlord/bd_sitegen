@@ -72,5 +72,82 @@ class TestTextNode(unittest.TestCase):
         link_match = extract_markdown_links("this is a link to [an image of a duck](https://duck.website.jpeg)")
         self.assertListEqual(img_match, link_match)
 
+    def test_split_images(self):
+        node = TextNode(
+            "This is text with an ![image](https://i.imgur.com/zjjcJKZ.png) and another ![second image](https://i.imgur.com/3elNhQu.png)",
+            TextType.TEXT,
+        )
+        new_nodes = split_nodes_image([node])
+        self.assertListEqual(
+            [
+                TextNode("This is text with an ", TextType.TEXT),
+                TextNode("image", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png"),
+                TextNode(" and another ", TextType.TEXT),
+                TextNode(
+                    "second image", TextType.IMAGE, "https://i.imgur.com/3elNhQu.png"
+                ),
+            ],
+            new_nodes,
+        )
+    
+    def test_split_images_2(self): #one image with no text on either side
+        node = TextNode("![here is an image](image.jpeg)", TextType.TEXT)
+        test_case = split_nodes_image([node])
+        self.assertListEqual([TextNode("here is an image", TextType.IMAGE, "image.jpeg")], test_case)
+
+    def test_split_images_3(self): #one image but there's also a link on there, text on all sides
+        node = TextNode(
+            "here is a block of text ![with an image](image.jpeg) and with a [link](link.html) on the side of it.",
+            TextType.TEXT,
+        )
+        test_case = split_nodes_image([node])
+        self.assertListEqual(
+            [
+                TextNode("here is a block of text ", TextType.TEXT),
+                TextNode("with an image", TextType.IMAGE, "image.jpeg"),
+                TextNode(" and with a [link](link.html) on the side of it.", TextType.TEXT),
+            ],
+            test_case,
+        )
+
+    def test_split_links_1(self): #same test as above but for links this time
+        node = TextNode(
+            "here is a block of text ![with an image](image.jpeg) and with a [link](link.html) on the side of it.",
+            TextType.TEXT,
+        )
+        test_case = split_nodes_link([node])
+        self.assertListEqual(
+            [
+                TextNode("here is a block of text ![with an image](image.jpeg) and with a ", TextType.TEXT),
+                TextNode("link", TextType.LINK, "link.html"),
+                TextNode(" on the side of it.", TextType.TEXT),
+            ],
+            test_case,
+        )
+
+    def test_split_links_2(self): #no link or image
+        node = TextNode("here's a block of text with no links or images", TextType.TEXT)
+        test_case = split_nodes_link([node])
+        self.assertListEqual(
+            [
+                TextNode("here's a block of text with no links or images", TextType.TEXT),
+            ],
+            test_case
+        )
+
+    def test_split_images_4(self): #two nodes as input
+        node = TextNode("here's an image: ![a duck](duck.jpeg)", TextType.TEXT)
+        node2 = TextNode("a second image: ![duck2](duck2.jpeg)", TextType.TEXT)
+        test_case = split_nodes_image([node, node2])
+        self.assertListEqual(
+            [
+                TextNode("here's an image: ", TextType.TEXT),
+                TextNode("a duck", TextType.IMAGE, "duck.jpeg"),
+                TextNode("a second image: ", TextType.TEXT),
+                TextNode("duck2", TextType.IMAGE, "duck2.jpeg"),
+            ],
+            test_case
+        )
+
 if __name__ == "__main__":
     unittest.main()
