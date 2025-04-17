@@ -2,7 +2,7 @@ from enum import Enum
 from htmlnode import *
 
 class TextType(Enum):
-    TEXT = "normal"
+    TEXT = "text"
     BOLD = "bold"
     ITALIC = "italic"
     CODE = "code"
@@ -39,3 +39,18 @@ def text_node_to_html_node(text_node):
             return LeafNode("img",None, props={"src":text_node.url,"alt":text_node.text})
         case _:
             return LeafNode()
+
+def split_nodes_delimiter(old_nodes, delimiter, text_type):
+    old_text = old_nodes.text
+    old_type = old_nodes.text_type
+    node_list = []
+    if old_text.count(delimiter) != 2:
+        raise Exception("invalid markdown syntax")
+    if old_type.value == "text":
+        split_text = old_text.split(delimiter)
+        node_list.append(TextNode(split_text[0], old_type))
+        node_list.append(TextNode(split_text[1], text_type))
+        node_list.append(TextNode(split_text[2], old_type))
+    else:
+        node_list.append(old_nodes)
+    return node_list

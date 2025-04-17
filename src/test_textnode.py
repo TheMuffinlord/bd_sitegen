@@ -36,5 +36,25 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual(hnode.props["alt"], "a picture of a dog")
         self.assertEqual(hnode.value, None)
 
+    def test_node_split_1(self):
+        oldnode = TextNode("this is a `code block` of text", TextType.TEXT)
+        newnode = split_nodes_delimiter(oldnode, "`", TextType.CODE)
+        result = [
+            TextNode("this is a ", TextType.TEXT),
+            TextNode("code block", TextType.CODE),
+            TextNode(" of text", TextType.TEXT)
+        ]
+        self.assertEqual(newnode, result)
+
+    def test_node_split_2(self): #expect an error
+        node1 = TextNode("this is a block of plain text", TextType.BOLD)
+        self.assertRaises(Exception, split_nodes_delimiter, node1, "*", TextType.CODE) 
+        #this took longer to figure out than the actual function!
+
+    def test_node_split_just_text(self):
+        node1 = TextNode("this is just a block of plain text but **i threw some bold in there** to see if it parses", TextType.BOLD)
+        node2 = split_nodes_delimiter(node1, "**", TextType.ITALIC)
+        self.assertEqual([node1], node2)
+
 if __name__ == "__main__":
     unittest.main()
