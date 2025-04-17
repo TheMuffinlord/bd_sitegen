@@ -1,6 +1,7 @@
 import unittest
 
 from textnode import *
+from loosefunctions import *
 
 class TestTextNode(unittest.TestCase):
     def test_eq(self):
@@ -55,6 +56,21 @@ class TestTextNode(unittest.TestCase):
         node1 = TextNode("this is just a block of plain text but **i threw some bold in there** to see if it parses", TextType.BOLD)
         node2 = split_nodes_delimiter(node1, "**", TextType.ITALIC)
         self.assertEqual([node1], node2)
+
+    def test_extract_markdown_images(self):
+        matches = extract_markdown_images(
+            "This is text with an ![image](https://i.imgur.com/zjjcJKZ.png)"
+        )
+        self.assertListEqual([("image", "https://i.imgur.com/zjjcJKZ.png")], matches)
+
+    def test_extracting_links(self):
+        matches = extract_markdown_links("[click here](https://minimumviable.website) for a cool website")
+        self.assertListEqual([("click here", "https://minimumviable.website")], matches)
+
+    def test_extracting_multiple(self):
+        img_match = extract_markdown_images("this is an image of ![an image of a duck](https://duck.website.jpeg)")
+        link_match = extract_markdown_links("this is a link to [an image of a duck](https://duck.website.jpeg)")
+        self.assertListEqual(img_match, link_match)
 
 if __name__ == "__main__":
     unittest.main()
