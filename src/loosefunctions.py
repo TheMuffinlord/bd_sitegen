@@ -21,18 +21,24 @@ def text_node_to_html_node(text_node): #chapter 2 lesson 6
             return LeafNode()
 
 def split_nodes_delimiter(old_nodes, delimiter, text_type): #chapter 3 lesson 1
-    old_text = old_nodes.text
-    old_type = old_nodes.text_type
     node_list = []
-    if old_text.count(delimiter) != 2:
-        raise Exception("invalid markdown syntax")
-    if old_type.value == "text":
-        split_text = old_text.split(delimiter)
-        node_list.append(TextNode(split_text[0], old_type))
-        node_list.append(TextNode(split_text[1], text_type))
-        node_list.append(TextNode(split_text[2], old_type))
-    else:
-        node_list.append(old_nodes)
+    for node in old_nodes:
+        old_text = node.text
+        old_type = node.text_type
+        if delimiter in old_text:
+            if old_text.count(delimiter) != 2:
+                raise Exception("invalid markdown syntax")
+            if old_type.value == "text":
+                split_text = old_text.split(delimiter)
+                if split_text[0] != "":
+                    node_list.append(TextNode(split_text[0], old_type))
+                node_list.append(TextNode(split_text[1], text_type))
+                if split_text[2] != "":
+                    node_list.append(TextNode(split_text[2], old_type))
+            else:
+                node_list.append(node)
+        else:
+            node_list.append(node)
     return node_list
 
 def extract_markdown_images(text): #chapter 3 lesson 4
@@ -88,6 +94,28 @@ def split_nodes_link(old_nodes):
             node_list.append(old_node)
     return node_list
             
+def text_to_textnodes(text):
+    text_nodes = [TextNode(text, TextType.TEXT)]
+    img_count = text.count("![")
+    if img_count > 0:
+        text_nodes = split_nodes_image(text_nodes)
+    link_count = text.count("[")
+    if link_count > img_count:
+        link_count -= img_count
+    if link_count > 0:
+        text_nodes = split_nodes_link(text_nodes)
+
+    if text.count("**")// 2 > 0:
+        text_nodes = split_nodes_delimiter(text_nodes, "**", TextType.BOLD)
+    
+    if text.count("_") // 2 > 0:
+        text_nodes = split_nodes_delimiter(text_nodes, "_", TextType.ITALIC)
+
+    if text.count("`") // 2 > 0:
+        text_nodes = split_nodes_delimiter(text_nodes, "`", TextType.CODE)
+
+
+    return text_nodes
 
             
 

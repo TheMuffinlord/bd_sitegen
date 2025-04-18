@@ -39,7 +39,7 @@ class TestTextNode(unittest.TestCase):
 
     def test_node_split_1(self):
         oldnode = TextNode("this is a `code block` of text", TextType.TEXT)
-        newnode = split_nodes_delimiter(oldnode, "`", TextType.CODE)
+        newnode = split_nodes_delimiter([oldnode], "`", TextType.CODE)
         result = [
             TextNode("this is a ", TextType.TEXT),
             TextNode("code block", TextType.CODE),
@@ -48,13 +48,13 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual(newnode, result)
 
     def test_node_split_2(self): #expect an error
-        node1 = TextNode("this is a block of plain text", TextType.BOLD)
-        self.assertRaises(Exception, split_nodes_delimiter, node1, "*", TextType.CODE) 
+        node1 = TextNode("this is a block of *plain text", TextType.BOLD)
+        self.assertRaises(Exception, split_nodes_delimiter, [node1], "*", TextType.CODE) 
         #this took longer to figure out than the actual function!
 
     def test_node_split_just_text(self):
         node1 = TextNode("this is just a block of plain text but **i threw some bold in there** to see if it parses", TextType.BOLD)
-        node2 = split_nodes_delimiter(node1, "**", TextType.ITALIC)
+        node2 = split_nodes_delimiter([node1], "**", TextType.ITALIC)
         self.assertEqual([node1], node2)
 
     def test_extract_markdown_images(self):
@@ -145,6 +145,54 @@ class TestTextNode(unittest.TestCase):
                 TextNode("a duck", TextType.IMAGE, "duck.jpeg"),
                 TextNode("a second image: ", TextType.TEXT),
                 TextNode("duck2", TextType.IMAGE, "duck2.jpeg"),
+            ],
+            test_case
+        )
+
+    def test_text_splitter_1(self): #provided test case
+        text = "This is **text** with an _italic_ word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)"
+        #node = TextNode(text, TextType.TEXT)
+        test_case = text_to_textnodes(text)
+        self.assertListEqual(
+            [
+                TextNode("This is ", TextType.TEXT),
+                TextNode("text", TextType.BOLD),
+                TextNode(" with an ", TextType.TEXT),
+                TextNode("italic", TextType.ITALIC),
+                TextNode(" word and a ", TextType.TEXT),
+                TextNode("code block", TextType.CODE),
+                TextNode(" and an ", TextType.TEXT),
+                TextNode("obi wan image", TextType.IMAGE, "https://i.imgur.com/fJRm4Vk.jpeg"),
+                TextNode(" and a ", TextType.TEXT),
+                TextNode("link", TextType.LINK, "https://boot.dev"),
+            ],
+            test_case
+        )
+
+    def test_text_splitter_2(self): #how many of these do i gotta writeeeeeeeeeeeeeeee
+        text = "_look_, I'm getting **tired**. `how many of these should i write?`"
+        test_case = text_to_textnodes(text)
+        self.assertListEqual(
+            [
+                TextNode("look", TextType.ITALIC),
+                TextNode(", I'm getting ", TextType.TEXT),
+                TextNode("tired", TextType.BOLD),
+                TextNode(". ", TextType.TEXT),
+                TextNode("how many of these should i write?", TextType.CODE)
+            ],
+            test_case
+        )
+
+    def test_text_splitter_3(self): #an underscore in the image tag. let's see if it catches it
+        text = "okay, have this ![real image](image_1.url) _real_ image."
+        test_case = text_to_textnodes(text)
+        self.assertListEqual(
+            [
+                TextNode("okay, have this ", TextType.TEXT),
+                TextNode("real image", TextType.IMAGE, "image_1.url"),
+                TextNode(" ", TextType.TEXT),
+                TextNode("real", TextType.ITALIC),
+                TextNode(" image.", TextType.TEXT),
             ],
             test_case
         )
