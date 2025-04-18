@@ -2,6 +2,7 @@ import unittest
 
 from textnode import *
 from loosefunctions import *
+from blockfuncs import *
 
 class TestTextNode(unittest.TestCase):
     def test_eq(self):
@@ -197,5 +198,56 @@ class TestTextNode(unittest.TestCase):
             test_case
         )
 
+    def test_markdown_to_blocks(self):
+        md = """
+This is **bolded** paragraph
+
+This is another paragraph with _italic_ text and `code` here
+This is the same paragraph on a new line
+
+- This is a list
+- with items
+""" #i hate how this breaks formatting ugh
+        blocks = markdown_to_blocks(md)
+        self.assertEqual(
+            blocks,
+            [
+                "This is **bolded** paragraph",
+                "This is another paragraph with _italic_ text and `code` here\nThis is the same paragraph on a new line",
+                "- This is a list\n- with items",
+            ],
+        )
+
+    def test_markdown_to_blocks_2(self):
+        md = """
+oh god how did this get here i am not good with computer
+"""
+        test_case = markdown_to_blocks(md)
+        self.assertListEqual(
+            [
+                "oh god how did this get here i am not good with computer",
+            ],
+            test_case
+        )
+
+    def test_markdown_to_blocks_3(self):
+        md = """
+it's real stupid how python respects tabs so much
+but there's no way to strip them from a block of text without regexes?
+
+sucks bro
+"""
+        test_case = markdown_to_blocks(md)
+        self.assertListEqual(
+            [
+                "it's real stupid how python respects tabs so much\nbut there's no way to strip them from a block of text without regexes?",
+                "sucks bro",
+            ],
+            test_case
+        )
+
+
+
+#ok just make sure this is at the bottom        
 if __name__ == "__main__":
     unittest.main()

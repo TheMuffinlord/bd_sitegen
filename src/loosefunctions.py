@@ -1,6 +1,7 @@
 from textnode import *
 from htmlnode import *
 
+
 import re
 
 def text_node_to_html_node(text_node): #chapter 2 lesson 6
@@ -113,9 +114,10 @@ def text_to_textnodes(text):
 
     if text.count("`") // 2 > 0:
         text_nodes = split_nodes_delimiter(text_nodes, "`", TextType.CODE)
-
-
+    #by god this seems to work
     return text_nodes
+
+#to be continued in blockfuncs
 
             
 
