@@ -2,14 +2,7 @@ from textnode import *
 from htmlnode import *
 from loosefunctions import *
 from blockfuncs import *
+from importstatic import *
 
-md = """
-This is **bolded** paragraph
+import_from_static("logfile.log")
 
-This is another paragraph with _italic_ text and `code` here
-This is the same paragraph on a new line
-
-- This is a list
-- with items
-"""
-print(markdown_to_blocks(md))

@@ -1,0 +1,309 @@
+
+2025-04-19 16:59:45.758210: beginning import from static to public. stand back.
+==================================
+2025-04-19 16:59:45.758887: deleting items from public folder
+2025-04-19 17:00:32.191848: copied item static/index.html to public
+2025-04-19 17:00:32.188436: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:00:32.188468: no public exists, moving on to copy
+2025-04-19 17:00:32.188471: copying files from static to public
+2025-04-19 17:01:22.694684: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:01:22.694718: deleting items from public folder
+2025-04-19 17:05:11.082382: copied item static/index.html to public
+2025-04-19 17:05:11.082035: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:05:11.082203: somehow public was a file. moving on now
+2025-04-19 17:05:11.082208: copying files from static to public
+2025-04-19 17:05:54.574502: copied item static/index.html to public
+2025-04-19 17:05:54.572983: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:05:54.574022: somehow public was a file. moving on now
+2025-04-19 17:05:54.574029: copying files from static to public
+2025-04-19 17:06:45.498222: copied item static/index.html to public
+2025-04-19 17:06:45.497977: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:06:45.498023: no public exists, moving on to copy
+2025-04-19 17:06:45.498027: copying files from static to public
+2025-04-19 17:09:43.947136: copied item static/index.html to public
+2025-04-19 17:09:43.946851: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:09:43.946952: somehow public was a file. moving on now
+2025-04-19 17:09:43.946958: copying files from static to public
+2025-04-19 17:10:42.673577: copied item static/index.html to public
+2025-04-19 17:10:42.672372: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:10:42.673094: somehow public was a file. moving on now
+2025-04-19 17:10:42.673101: copying files from static to public
+2025-04-19 17:11:30.762301: copied item static/index.html to public
+2025-04-19 17:11:30.760500: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:11:30.761786: somehow public was a file. moving on now
+2025-04-19 17:11:30.761794: copying files from static to public
+2025-04-19 17:13:15.107378: copied item static/index.html to public
+2025-04-19 17:13:15.107023: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:13:15.107152: somehow public was a file. moving on now
+2025-04-19 17:13:15.107159: copying files from static to public
+2025-04-19 17:14:45.018804: no files to write from directory static/test_empty
+2025-04-19 17:14:45.023443: copied item static/test_recursion/index.html to public/test_recursion
+2025-04-19 17:14:45.023937: copied item static/test_recursion/styles.css to public/test_recursion
+2025-04-19 17:14:45.018304: copied item static/index.html to public
+2025-04-19 17:14:45.018772: created directory public/test_empty, adding items
+2025-04-19 17:14:45.021454: copied item static/tolkien.png to public
+2025-04-19 17:14:45.022909: created directory public/test_recursion, adding items
+2025-04-19 17:14:45.024330: copied item static/index.css to public
+2025-04-19 17:14:45.016596: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:14:45.017282: no public exists, moving on to copy
+2025-04-19 17:14:45.017850: copying files from static to public
+2025-04-19 17:14:52.922033: REMOVED folder public/test_empty on initial check: empty folder
+2025-04-19 17:14:52.922301: REMOVED file public/test_recursion/index.html
+2025-04-19 17:14:52.922319: REMOVED file public/test_recursion/styles.css
+2025-04-19 17:14:52.921927: REMOVED file public/index.html
+2025-04-19 17:14:52.922248: REMOVED file public/tolkien.png
+2025-04-19 17:14:52.922401: REMOVED folder public/test_recursion once empty
+2025-04-19 17:14:52.922425: REMOVED file public/index.css
+2025-04-19 17:14:52.921716: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:14:52.921806: deleting items from public folder
+2025-04-19 17:14:52.922467: public cleared, remaking and moving on
+2025-04-19 17:16:46.477839: REMOVED folder public on initial check: empty folder
+2025-04-19 17:16:46.482205: no files to write from directory static/test_empty
+2025-04-19 17:16:46.483737: copied item static/test_recursion/index.html to public/test_recursion
+2025-04-19 17:16:46.483870: copied item static/test_recursion/styles.css to public/test_recursion
+2025-04-19 17:16:46.481599: copied item static/index.html to public
+2025-04-19 17:16:46.482143: created directory public/test_empty, adding items
+2025-04-19 17:16:46.483011: copied item static/tolkien.png to public
+2025-04-19 17:16:46.483546: created directory public/test_recursion, adding items
+2025-04-19 17:16:46.484033: copied item static/index.css to public
+2025-04-19 17:16:46.477684: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:16:46.477729: deleting items from public folder
+2025-04-19 17:16:46.477861: public cleared, remaking and moving on
+2025-04-19 17:16:46.481260: copying files from static to public
+2025-04-19 17:16:56.623011: REMOVED folder public/test_empty on initial check: empty folder
+2025-04-19 17:16:56.623195: REMOVED file public/test_recursion/index.html
+2025-04-19 17:16:56.623209: REMOVED file public/test_recursion/styles.css
+2025-04-19 17:16:56.622919: REMOVED file public/index.html
+2025-04-19 17:16:56.623161: REMOVED file public/tolkien.png
+2025-04-19 17:16:56.623270: REMOVED folder public/test_recursion once empty
+2025-04-19 17:16:56.623289: REMOVED file public/index.css
+2025-04-19 17:16:56.622786: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:16:56.622836: deleting items from public folder
+2025-04-19 17:16:56.623314: public cleared, remaking and moving on
+2025-04-19 17:16:59.585082: REMOVED folder public on initial check: empty folder
+2025-04-19 17:16:59.587560: no files to write from directory static/test_empty
+2025-04-19 17:16:59.591700: copied item static/test_recursion/index.html to public/test_recursion
+2025-04-19 17:16:59.591807: copied item static/test_recursion/styles.css to public/test_recursion
+2025-04-19 17:16:59.585425: copied item static/index.html to public
+2025-04-19 17:16:59.587451: created directory public/test_empty, adding items
+2025-04-19 17:16:59.588262: copied item static/tolkien.png to public
+2025-04-19 17:16:59.591486: created directory public/test_recursion, adding items
+2025-04-19 17:16:59.591935: copied item static/index.css to public
+2025-04-19 17:16:59.584892: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:16:59.584945: deleting items from public folder
+2025-04-19 17:16:59.585105: public cleared, remaking and moving on
+2025-04-19 17:16:59.585281: copying files from static to public
+2025-04-19 17:17:03.178430: REMOVED folder public/test_empty on initial check: empty folder
+2025-04-19 17:17:03.178599: REMOVED file public/test_recursion/index.html
+2025-04-19 17:17:03.178612: REMOVED file public/test_recursion/styles.css
+2025-04-19 17:17:03.178354: REMOVED file public/index.html
+2025-04-19 17:17:03.178562: REMOVED file public/tolkien.png
+2025-04-19 17:17:03.178674: REMOVED folder public/test_recursion once empty
+2025-04-19 17:17:03.178693: REMOVED file public/index.css
+2025-04-19 17:17:03.178225: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:17:03.178273: deleting items from public folder
+2025-04-19 17:17:03.178721: public cleared, remaking and moving on
+2025-04-19 17:19:40.451053: REMOVED folder public on initial check: empty folder
+2025-04-19 17:19:40.455318: no files to write from directory static/test_empty
+2025-04-19 17:19:40.456517: copied item static/test_recursion/index.html to public/test_recursion
+2025-04-19 17:19:40.456695: copied item static/test_recursion/styles.css to public/test_recursion
+2025-04-19 17:19:40.454788: copied item static/index.html to public
+2025-04-19 17:19:40.455270: created directory public/test_empty, adding items
+2025-04-19 17:19:40.455803: copied item static/tolkien.png to public
+2025-04-19 17:19:40.456278: created directory public/test_recursion, adding items
+2025-04-19 17:19:40.456907: copied item static/index.css to public
+2025-04-19 17:19:40.450874: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:19:40.450922: deleting items from public folder
+2025-04-19 17:19:40.454523: public cleared, remaking and moving on
+2025-04-19 17:19:40.454547: copying files from static to public
+2025-04-19 17:19:42.140342: REMOVED folder public/test_empty on initial check: empty folder
+2025-04-19 17:19:42.140504: REMOVED file public/test_recursion/index.html
+2025-04-19 17:19:42.140518: REMOVED file public/test_recursion/styles.css
+2025-04-19 17:19:42.140263: REMOVED file public/index.html
+2025-04-19 17:19:42.140469: REMOVED file public/tolkien.png
+2025-04-19 17:19:42.140582: REMOVED folder public/test_recursion once empty
+2025-04-19 17:19:42.140601: REMOVED file public/index.css
+2025-04-19 17:19:42.142345: no files to write from directory static/test_empty
+2025-04-19 17:19:42.146618: copied item static/test_recursion/index.html to public/test_recursion
+2025-04-19 17:19:42.146724: copied item static/test_recursion/styles.css to public/test_recursion
+2025-04-19 17:19:42.140781: copied item static/index.html to public
+2025-04-19 17:19:42.142309: created directory public/test_empty, adding items
+2025-04-19 17:19:42.142867: copied item static/tolkien.png to public
+2025-04-19 17:19:42.146390: created directory public/test_recursion, adding items
+2025-04-19 17:19:42.146849: copied item static/index.css to public
+2025-04-19 17:19:42.140127: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:19:42.140179: deleting items from public folder
+2025-04-19 17:19:42.140638: public wasn't cleared but we'll go on anyway.
+2025-04-19 17:19:42.140643: copying files from static to public
+2025-04-19 17:19:42.759672: REMOVED folder public/test_empty on initial check: empty folder
+2025-04-19 17:19:42.759847: REMOVED file public/test_recursion/index.html
+2025-04-19 17:19:42.759860: REMOVED file public/test_recursion/styles.css
+2025-04-19 17:19:42.759586: REMOVED file public/index.html
+2025-04-19 17:19:42.759808: REMOVED file public/tolkien.png
+2025-04-19 17:19:42.759925: REMOVED folder public/test_recursion once empty
+2025-04-19 17:19:42.759943: REMOVED file public/index.css
+2025-04-19 17:19:42.760362: no files to write from directory static/test_empty
+2025-04-19 17:19:42.761203: copied item static/test_recursion/index.html to public/test_recursion
+2025-04-19 17:19:42.761289: copied item static/test_recursion/styles.css to public/test_recursion
+2025-04-19 17:19:42.760126: copied item static/index.html to public
+2025-04-19 17:19:42.760338: created directory public/test_empty, adding items
+2025-04-19 17:19:42.760823: copied item static/tolkien.png to public
+2025-04-19 17:19:42.761055: created directory public/test_recursion, adding items
+2025-04-19 17:19:42.761422: copied item static/index.css to public
+2025-04-19 17:19:42.759405: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:19:42.759449: deleting items from public folder
+2025-04-19 17:19:42.759981: public wasn't cleared but we'll go on anyway.
+2025-04-19 17:19:42.759986: copying files from static to public
+2025-04-19 17:21:49.449227: REMOVED folder public/test_empty on initial check: empty folder
+2025-04-19 17:21:49.449557: REMOVED file public/test_recursion/index.html
+2025-04-19 17:21:49.449574: REMOVED file public/test_recursion/styles.css
+2025-04-19 17:21:49.449158: REMOVED file public/index.html
+2025-04-19 17:21:49.449509: REMOVED file public/tolkien.png
+2025-04-19 17:21:49.449883: REMOVED folder public/test_recursion once empty
+2025-04-19 17:21:49.449909: REMOVED file public/index.css
+2025-04-19 17:21:49.450889: COPY: no files to write from directory static/test_empty
+2025-04-19 17:21:49.453693: COPY: copied item static/test_recursion/index.html to public/test_recursion
+2025-04-19 17:21:49.454188: COPY: copied item static/test_recursion/styles.css to public/test_recursion
+2025-04-19 17:21:49.450394: COPY: copied item static/index.html to public
+2025-04-19 17:21:49.450859: COPY: created directory public/test_empty, adding items
+2025-04-19 17:21:49.453108: COPY: copied item static/tolkien.png to public
+2025-04-19 17:21:49.453317: COPY: created directory public/test_recursion, adding items
+2025-04-19 17:21:49.454562: COPY: copied item static/index.css to public
+2025-04-19 17:21:49.448357: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:21:49.449089: deleting items from public folder
+2025-04-19 17:21:49.449954: public wasn't cleared but we'll go on anyway.
+2025-04-19 17:21:49.449959: copying files from static to public
+2025-04-19 17:21:49.454595: COMPLETE: operation should be done. phew!
+2025-04-19 17:22:43.401866: REMOVED folder public/test_empty on initial check: empty folder
+2025-04-19 17:22:43.402023: REMOVED file public/test_recursion/index.html
+2025-04-19 17:22:43.402040: REMOVED file public/test_recursion/styles.css
+2025-04-19 17:22:43.401801: REMOVED file public/index.html
+2025-04-19 17:22:43.401984: REMOVED file public/tolkien.png
+2025-04-19 17:22:43.402101: REMOVED folder public/test_recursion once empty
+2025-04-19 17:22:43.402124: REMOVED file public/index.css
+2025-04-19 17:22:43.404229: COPY: no files to write from directory static/test_empty
+2025-04-19 17:22:43.405441: COPY: copied item static/test_recursion/index.html to public/test_recursion
+2025-04-19 17:22:43.405497: COPY: copied item static/test_recursion/styles.css to public/test_recursion
+2025-04-19 17:22:43.402239: COPY: copied item static/index.html to public
+2025-04-19 17:22:43.404197: COPY: created directory public/test_empty, adding items
+2025-04-19 17:22:43.404716: COPY: copied item static/tolkien.png to public
+2025-04-19 17:22:43.405323: COPY: created directory public/test_recursion, adding items
+2025-04-19 17:22:43.405580: COPY: copied item static/index.css to public
+2025-04-19 17:22:43.401691: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:22:43.401734: deleting items from public folder
+2025-04-19 17:22:43.402144: public wasn't cleared but we'll go on anyway.
+2025-04-19 17:22:43.402146: copying files from static to public
+2025-04-19 17:22:43.405595: COMPLETE: operation should be done. phew!
+2025-04-19 17:24:13.417516: REMOVED folder public/test_empty on initial check: empty folder
+2025-04-19 17:24:13.417700: REMOVED file public/test_recursion/index.html
+2025-04-19 17:24:13.417717: REMOVED file public/test_recursion/styles.css
+2025-04-19 17:24:13.417443: REMOVED file public/index.html
+2025-04-19 17:24:13.417660: REMOVED file public/tolkien.png
+2025-04-19 17:24:13.417788: REMOVED folder public/test_recursion once empty
+2025-04-19 17:24:13.417811: REMOVED file public/index.css
+2025-04-19 17:24:13.418855: COPY: no files to write from directory static/test_empty
+2025-04-19 17:24:13.422142: COPY: copied item static/test_recursion/index.html to public/test_recursion
+2025-04-19 17:24:13.422586: COPY: copied item static/test_recursion/styles.css to public/test_recursion
+2025-04-19 17:24:13.418287: COPY: copied item static/index.html to public
+2025-04-19 17:24:13.418823: COPY: created directory public/test_empty, adding items
+2025-04-19 17:24:13.421211: COPY: copied item static/tolkien.png to public
+2025-04-19 17:24:13.421759: COPY: created directory public/test_recursion, adding items
+2025-04-19 17:24:13.422889: COPY: copied item static/index.css to public
+2025-04-19 17:24:13.416775: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:24:13.417369: deleting items from public folder
+2025-04-19 17:24:13.417848: public wasn't cleared but we'll go on anyway.
+2025-04-19 17:24:13.417853: copying files from static to public
+2025-04-19 17:24:13.422928: COMPLETE: operation should be done. phew!
+==================================
+2025-04-19 17:24:41.399513: REMOVED folder public/test_empty on initial check: empty folder
+2025-04-19 17:24:41.399727: REMOVED file public/test_recursion/index.html
+2025-04-19 17:24:41.399743: REMOVED file public/test_recursion/styles.css
+2025-04-19 17:24:41.399407: REMOVED file public/index.html
+2025-04-19 17:24:41.399683: REMOVED file public/tolkien.png
+2025-04-19 17:24:41.400120: REMOVED folder public/test_recursion once empty
+2025-04-19 17:24:41.400152: REMOVED file public/index.css
+2025-04-19 17:24:41.400730: COPY: no files to write from directory static/test_empty
+2025-04-19 17:24:41.401660: COPY: copied item static/images/tolkien.png to public/images
+2025-04-19 17:24:41.402049: COPY: copied item static/test_recursion/index.html to public/test_recursion
+2025-04-19 17:24:41.402136: COPY: copied item static/test_recursion/styles.css to public/test_recursion
+2025-04-19 17:24:41.400395: COPY: copied item static/index.html to public
+2025-04-19 17:24:41.400694: COPY: created directory public/test_empty, adding items
+2025-04-19 17:24:41.401013: COPY: created directory public/images, adding items
+2025-04-19 17:24:41.401900: COPY: created directory public/test_recursion, adding items
+2025-04-19 17:24:41.402270: COPY: copied item static/index.css to public
+2025-04-19 17:24:41.399231: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:24:41.399293: deleting items from public folder
+2025-04-19 17:24:41.400208: public wasn't cleared but we'll go on anyway.
+2025-04-19 17:24:41.400216: copying files from static to public
+2025-04-19 17:24:41.402305: COMPLETE: operation should be done. phew!
+==================================
+2025-04-19 17:24:58.041362: REMOVED folder public/test_empty on initial check: empty folder
+2025-04-19 17:24:58.041504: REMOVED file public/images/tolkien.png
+2025-04-19 17:24:58.041594: REMOVED file public/test_recursion/index.html
+2025-04-19 17:24:58.041606: REMOVED file public/test_recursion/styles.css
+2025-04-19 17:24:58.041274: REMOVED file public/index.html
+2025-04-19 17:24:58.041553: REMOVED folder public/images once empty
+2025-04-19 17:24:58.041665: REMOVED folder public/test_recursion once empty
+2025-04-19 17:24:58.041683: REMOVED file public/index.css
+2025-04-19 17:24:58.043541: COPY: no files to write from directory static/test_empty
+2025-04-19 17:24:58.044825: COPY: copied item static/images/tolkien.png to public/images
+2025-04-19 17:24:58.048226: COPY: copied item static/test_recursion/index.html to public/test_recursion
+2025-04-19 17:24:58.048278: COPY: copied item static/test_recursion/styles.css to public/test_recursion
+2025-04-19 17:24:58.041799: COPY: copied item static/index.html to public
+2025-04-19 17:24:58.043509: COPY: created directory public/test_empty, adding items
+2025-04-19 17:24:58.044372: COPY: created directory public/images, adding items
+2025-04-19 17:24:58.048131: COPY: created directory public/test_recursion, adding items
+2025-04-19 17:24:58.048360: COPY: copied item static/index.css to public
+2025-04-19 17:24:58.041153: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:24:58.041196: deleting items from public folder
+2025-04-19 17:24:58.041707: public wasn't cleared but we'll go on anyway.
+2025-04-19 17:24:58.041709: copying files from static to public
+2025-04-19 17:24:58.048387: COMPLETE: operation should be done. phew!
+==================================
+2025-04-19 17:25:04.601098: REMOVED folder public/test_empty on initial check: empty folder
+2025-04-19 17:25:04.601234: REMOVED file public/images/tolkien.png
+2025-04-19 17:25:04.601322: REMOVED file public/test_recursion/index.html
+2025-04-19 17:25:04.601334: REMOVED file public/test_recursion/styles.css
+2025-04-19 17:25:04.601027: REMOVED file public/index.html
+2025-04-19 17:25:04.601282: REMOVED folder public/images once empty
+2025-04-19 17:25:04.601394: REMOVED folder public/test_recursion once empty
+2025-04-19 17:25:04.601412: REMOVED file public/index.css
+2025-04-19 17:25:04.604222: COPY: no files to write from directory static/test_empty
+2025-04-19 17:25:04.609862: COPY: copied item static/images/tolkien.png to public/images
+2025-04-19 17:25:04.611226: COPY: copied item static/test_recursion/index.html to public/test_recursion
+2025-04-19 17:25:04.611311: COPY: copied item static/test_recursion/styles.css to public/test_recursion
+2025-04-19 17:25:04.601528: COPY: copied item static/index.html to public
+2025-04-19 17:25:04.603966: COPY: created directory public/test_empty, adding items
+2025-04-19 17:25:04.608410: COPY: created directory public/images, adding items
+2025-04-19 17:25:04.611092: COPY: created directory public/test_recursion, adding items
+2025-04-19 17:25:04.611455: COPY: copied item static/index.css to public
+2025-04-19 17:25:04.600908: beginning import from static to public. stand back.
+==================================
+2025-04-19 17:25:04.600949: deleting items from public folder
+2025-04-19 17:25:04.601438: public wasn't cleared but we'll go on anyway.
+2025-04-19 17:25:04.601441: copying files from static to public
+2025-04-19 17:25:04.611497: COMPLETE: operation should be done. phew!
+==================================
