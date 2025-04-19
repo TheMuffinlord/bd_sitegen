@@ -1,4 +1,5 @@
 __pycache__/
 bd_sitegen.code-workspace
 public/
-logfile.log
+public/*
+*.log
