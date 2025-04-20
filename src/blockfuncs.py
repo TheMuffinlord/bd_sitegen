@@ -46,7 +46,8 @@ def block_to_block_type(markdown): #i feel like there should be a better way to 
         quote_block = markdown.splitlines()
         for quote in quote_block:
             quote = quote.strip()
-            if quote.startswith("> ") == False:
+            #print(f"QUOTE CHECKING {quote}")
+            if quote.startswith(">") == False:
                 return BlockType.paragraph
         return BlockType.quote
     
@@ -93,6 +94,7 @@ def block_typer(block): #returns the html tag for the block
         case BlockType.quote:
             return block_quoter(block)
         case BlockType.unordered_list:
+            #print(f"{block} is an unordered list")
             return block_unlister(block)
         case BlockType.ordered_list:
             return block_orlister(block)
@@ -104,25 +106,34 @@ def inline_checker(tag, text):
     if len(text_nodes) > 1:
         children = []
         for node in text_nodes:
-            if node.text != None and node.text != "":
-                child_node = text_node_to_html_node(node)
-                children.append(child_node)
+            #print(f"processing inline node {node}")
+            #if node.text != None and node.text != "":
+            
+            child_node = text_node_to_html_node(node)
+            #print(f"appending {child_node}")
+            children.append(child_node)
         return ParentNode(tag, children)
-    return LeafNode(tag, text)
+    solo_node = text_node_to_html_node(text_nodes[0])
+    #if tag != 
+    #solo_node.tag = tag
+    #print(f"appending {solo_node}")
+
+    return ParentNode(tag, [solo_node])
 
 def block_paragrapher(block):
     p_lines = block.splitlines()
     p_list = []
     for line in p_lines:
-        p_line = line.strip()
-        if p_line != None and p_line != "" and p_line != "\n":
+        p_line = text_to_textnodes(line.strip())
+        #if p_line != None and p_line != "" and p_line != "\n":
             #print(p_line)
-            p_list.append(p_line)
-    p_block = " ".join(p_list)
-    return inline_checker("p", p_block)
+        for p in p_line:
+            p_list.append(text_node_to_html_node(p))
+    #p_block = " ".join(p_list)
+    return ParentNode("p", p_list)
 
 def block_headers(block):
-    h_level = 0
+    #h_level = 0
     headings = [
         "# ",
         "## ",
@@ -140,19 +151,26 @@ def block_headers(block):
 
 def block_quoter(block):
     lines = block.splitlines()
+    #print(f"BLOCK QUOTE PROCESSING {lines}")
     q_lines = []
     #print(lines)
     for line in lines:
-        q_lines.append(line.lstrip("> "))
-    q_block = "\n".join(q_lines)
+        stripped_line = text_to_textnodes(line.lstrip("> "))
+        #if stripped_line == "" or stripped_line == None:
+        #   stripped_line = "\n"
+        for s in stripped_line:
+            s.text += "<br />"
+            q_lines.append(text_node_to_html_node(s))
+    
     #print(q_block)
-    return inline_checker("blockquote", q_block)
+    return ParentNode("blockquote", q_lines)
 
 def block_unlister(block):
     lines = block.splitlines()
     ul_lines = []
     for line in lines:
         ul_lines.append(inline_checker("li", line.lstrip("- ")))
+    #print(f"unordered list containing {ul_lines} identified")
     return ParentNode("ul", ul_lines)
 
 def block_orlister(block):

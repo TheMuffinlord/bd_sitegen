@@ -17,6 +17,7 @@ def text_node_to_html_node(text_node): #chapter 2 lesson 6
         case TextType.LINK:
             return LeafNode("a", text_node.text, {"href":text_node.url})
         case TextType.IMAGE:
+            #print("identified an image")
             return LeafNode("img",None, props={"src":text_node.url,"alt":text_node.text})
         case _:
             return LeafNode()
@@ -70,6 +71,7 @@ def split_nodes_image(old_nodes):
                     
         else:
             node_list.append(old_node)
+        #print(f"results of image split: {node_list}")
     return node_list
             
             
@@ -93,17 +95,21 @@ def split_nodes_link(old_nodes):
                 node_list.append(TextNode(old_text, old_type))
         else:
             node_list.append(old_node)
+    #print(f"results of link split: {node_list}")
     return node_list
             
 def text_to_textnodes(text):
     text_nodes = [TextNode(text, TextType.TEXT)]
     img_count = text.count("![")
     if img_count > 0:
+        #print("found images, splitting")
+        #print(f"{img_count} images found")
         text_nodes = split_nodes_image(text_nodes)
     link_count = text.count("[")
     if link_count > img_count:
         link_count -= img_count
     if link_count > 0:
+        #print(f"found {link_count} links, splitting")
         text_nodes = split_nodes_link(text_nodes)
 
     if text.count("**")// 2 > 0:
