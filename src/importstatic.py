@@ -91,3 +91,46 @@ def copy_files(logfile, o_path, d_path):
                 else:
                     log_timestamp(l, f"COPY: i don't know what {original_item} is. not copied")
     l.closed
+
+def generate_page(from_path, template_path, dest_path):
+    print(f"Generating page from {from_path} to {dest_path} using template {template_path}")
+    from_file = open(from_path)
+    template_file = open(template_path)
+    from_markdown = from_file.read()
+    template_html = template_file.read()
+    from_htmlnode = markdown_to_html_node(from_markdown)
+    from_html = from_htmlnode.to_html()
+    from_title = extract_title(from_markdown).lstrip("# ")
+    dest_html = template_html.replace("{{ Title }}", from_title)
+    dest_html = dest_html.replace("{{ Content }}", from_html)
+    from_file.close()
+    template_file.close()
+    with open(dest_path, "w", encoding="utf-8") as dest_file:
+        dest_file.write(dest_html)
+    dest_file.closed
+
+def convert_md_files(logfile, md_path, dest_path):
+    with open(logfile, "a", encoding="utf-8") as l:
+        md_list = os.listdir(md_path)
+        if md_list == []:
+            log_timestamp(l, f"CONVERT: no files to convert from {md_path}\n")           
+        else:            
+            for md_item in md_list:
+                d_item = f"{dest_path}/{md_item}"
+                original_item = f"{md_path}/{md_item}"
+                if os.path.isdir(original_item):
+                    try:
+                        os.makedirs(d_item)
+                        log_timestamp(l, f"CONVERT: created directory {d_item}, adding items\n")
+                    except FileExistsError:
+                        log_timestamp(l, f"CONVERT: directory {d_item} already exists. moving on")
+                    
+                    convert_md_files(logfile, original_item, d_item)
+                elif os.path.isfile(original_item):
+                    if original_item.endswith(".md"):
+                        d_item = d_item.replace(".md", ".html")
+                        generate_page(original_item, "template.html", d_item)
+                        log_timestamp(l, f"CONVERT: converted item {original_item} to {d_item}\n")
+                else:
+                    log_timestamp(l, f"CONVERT: {original_item} not converted, only markdown files get converted")
+    l.closed

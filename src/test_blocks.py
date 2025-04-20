@@ -150,3 +150,27 @@ until i end it
             html,
             "<div><pre><code>This is text that _should_ remain\nthe **same** even with inline stuff</code></pre></div>",
         )
+
+    def test_header_finder_1(self): #this one should be ezpz
+        md = "# hello!!"
+        test_case = extract_title(md)
+        self.assertEqual("# hello!!", test_case)
+
+    def test_header_finder_2(self): #test multiple lines with one header
+        md = """
+this line is not a title
+# this line is a title
+## this line should be ignored"""
+        test_case = extract_title(md)
+        self.assertEqual("# this line is a title", test_case)
+
+    def test_header_finder_3(self): #presented with two h1 lines only the first should be returned
+        md = """
+# this line should be returned
+# this line should not"""
+        test_case = extract_title(md)
+        self.assertEqual("# this line should be returned", test_case)
+
+    def test_header_finder_4(self): #but what if no header
+        md = "no header here, go away"
+        self.assertRaises(Exception, extract_title, md)

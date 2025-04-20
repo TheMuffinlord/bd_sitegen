@@ -176,3 +176,10 @@ def block_coder(block):
     #print(c_result)
     c_t_node = TextNode(c_result, TextType.CODE)
     return ParentNode("pre", [text_node_to_html_node(c_t_node)])
+
+def extract_title(markdown):
+    md_lines = markdown.splitlines()
+    for line in md_lines:
+        if line.startswith("# "):
+            return line
+    raise Exception("no title line defined")
