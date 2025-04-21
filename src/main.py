@@ -11,7 +11,7 @@ if basepath == None:
     basepath = "/"
 
 
-import_from_static("logfile.log")
+import_from_static("logfile.log", "docs")
 convert_md_files("logfile.log", "content", "docs", basepath)
 
 #test_md = """#This series, a cornerstone of what I, in my many years as an **Archmage**, have come to recognize as the pinnacle of imaginative creation, stands unrivaled in its depth, complexity, and the sheer scope of its _legendarium_. As we embark on this exploration, let us delve into the reasons why this monumental work is celebrated as the finest in the world."""

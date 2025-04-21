@@ -11,31 +11,31 @@ def log_timestamp(open_file, text:str): #i'm so tired of typing these two instru
         text = text.rstrip("\n")
     open_file.write(f"{now}: {text}\n")
 
-def import_from_static(logfile): #takes a file path as input for log file destination
+def import_from_static(logfile, pub_dir): #takes a file path as input for log file destination
     with open(logfile, "a", encoding="utf-8") as l:
         log_timestamp(l, "beginning import from static to public. stand back.\n==================================\n")
         pub_check = os.listdir(".")
-        if pub_check.count("public") != 0:
-            if os.path.isdir("public"):
+        if pub_check.count(pub_dir) != 0:
+            if os.path.isdir(pub_dir):
                 log_timestamp(l, "deleting items from public folder\n")
-                deleted = delete_from_path(logfile, "public")
+                deleted = delete_from_path(logfile, pub_dir)
                 if deleted == False:
                     log_timestamp(l, "delete may not have completed cleanly. check directory\n")
                 else:
-                    if os.listdir(".").count("public") == 0:
-                        os.mkdir("public")
+                    if os.listdir(".").count(pub_dir) == 0:
+                        os.mkdir(pub_dir)
                         log_timestamp(l, "public cleared, remaking and moving on")
                     else:
                         log_timestamp(l, "public wasn't cleared but we'll go on anyway.")
-            elif os.path.isfile("public"):
-                os.remove("public")
+            elif os.path.isfile(pub_dir):
+                os.remove(pub_dir)
                 log_timestamp(l, "somehow public was a file. moving on now")
         else:
             log_timestamp(l, "no public exists, moving on to copy")
-            os.mkdir("public")
+            os.mkdir(pub_dir)
         log_timestamp(l, "copying files from static to public")
 
-        copy_files(logfile, "static", "public")
+        copy_files(logfile, "static", pub_dir)
         log_timestamp(l, "COMPLETE: operation should be done. phew!\n==================================")
 
     l.closed
