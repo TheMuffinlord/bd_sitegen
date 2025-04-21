@@ -61,7 +61,7 @@ def block_to_block_type(markdown): #i feel like there should be a better way to 
     
     if markdown.startswith("1. "):
         ol_block = markdown.splitlines()
-        ordered = True
+        #ordered = True
         count = 1
         for ol in ol_block:
             ol = ol.strip()
@@ -77,8 +77,10 @@ def block_to_block_type(markdown): #i feel like there should be a better way to 
 def markdown_to_html_node(markdown): 
     childnodes = []
     md_blocks = markdown_to_blocks(markdown)
+    #print(md_blocks) #TEST
     for block in md_blocks:
         node = block_typer(block)
+
         childnodes.append(node)
     return ParentNode("div", childnodes)
 
@@ -103,15 +105,20 @@ def block_typer(block): #returns the html tag for the block
             
 def inline_checker(tag, text):
     text_nodes = text_to_textnodes(text)
+    #print(f"text nodes: {text_nodes}")
     if len(text_nodes) > 1:
         children = []
         for node in text_nodes:
             #print(f"processing inline node {node}")
             #if node.text != None and node.text != "":
-            
-            child_node = text_node_to_html_node(node)
+            if isinstance(node, list):
+                child_list = node_delistifer(node)
+                for child in child_list:
+                    children.append(text_node_to_html_node(child))
+            else:
+                child_node = text_node_to_html_node(node)
             #print(f"appending {child_node}")
-            children.append(child_node)
+                children.append(child_node)
         return ParentNode(tag, children)
     solo_node = text_node_to_html_node(text_nodes[0])
     #if tag != 
@@ -122,15 +129,32 @@ def inline_checker(tag, text):
 
 def block_paragrapher(block):
     p_lines = block.splitlines()
+    #print(p_lines)
     p_list = []
     for line in p_lines:
+        #print(line) #MAKE SURE YOU COMMENT THIS OUT WHEN YOU'RE DONE TESTING
         p_line = text_to_textnodes(line.strip())
         #if p_line != None and p_line != "" and p_line != "\n":
             #print(p_line)
+        #if len(p_line)> 1:
+
         for p in p_line:
-            p_list.append(text_node_to_html_node(p))
+            #print(p) #COMMENT OUT WHERN DONE
+            if isinstance(p, list):
+                #print(f"{p} is a list. separating into elements:")
+                q = node_delistifer(p)
+                for r in q:
+                    p_list.append(text_node_to_html_node(r))
+            else:
+                p_list.append(text_node_to_html_node(p))
+        #else:
+            #print(f"p_line length 1: {p_line}, {p_line[0]}")
     #p_block = " ".join(p_list)
     return ParentNode("p", p_list)
+
+
+            
+
 
 def block_headers(block):
     #h_level = 0
@@ -178,6 +202,7 @@ def block_orlister(block):
     ol_lines = []
     count = 1
     for line in lines:
+        #print(f"ORDERED LINE {line}")
         ol_lines.append(inline_checker("li", line.lstrip(f"{count}. ")))
         count +=1
     return ParentNode("ol", ol_lines)
