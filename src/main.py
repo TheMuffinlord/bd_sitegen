@@ -6,7 +6,7 @@ from importstatic import *
 
 import sys
 
-basepath = sys.argv[0]
+basepath = sys.argv[1]
 if basepath == None:
     basepath = "/"
 
