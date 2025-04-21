@@ -92,7 +92,7 @@ def copy_files(logfile, o_path, d_path):
                     log_timestamp(l, f"COPY: i don't know what {original_item} is. not copied")
     l.closed
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, basepath):
     print(f"Generating page from {from_path} to {dest_path} using template {template_path}")
     from_file = open(from_path)
     template_file = open(template_path)
@@ -103,13 +103,15 @@ def generate_page(from_path, template_path, dest_path):
     from_title = extract_title(from_markdown).lstrip("# ")
     dest_html = template_html.replace("{{ Title }}", from_title)
     dest_html = dest_html.replace("{{ Content }}", from_html)
+    dest_html = dest_html.replace('href="/', f'href="{basepath}')
+    dest_html = dest_html.replace('src="/', f'src="{basepath}')
     from_file.close()
     template_file.close()
     with open(dest_path, "w", encoding="utf-8") as dest_file:
         dest_file.write(dest_html)
     dest_file.closed
 
-def convert_md_files(logfile, md_path, dest_path):
+def convert_md_files(logfile, md_path, dest_path, basepath):
     with open(logfile, "a", encoding="utf-8") as l:
         md_list = os.listdir(md_path)
         if md_list == []:
@@ -125,11 +127,11 @@ def convert_md_files(logfile, md_path, dest_path):
                     except FileExistsError:
                         log_timestamp(l, f"CONVERT: directory {d_item} already exists. moving on")
                     
-                    convert_md_files(logfile, original_item, d_item)
+                    convert_md_files(logfile, original_item, d_item, basepath)
                 elif os.path.isfile(original_item):
                     if original_item.endswith(".md"):
                         d_item = d_item.replace(".md", ".html")
-                        generate_page(original_item, "template.html", d_item)
+                        generate_page(original_item, "template.html", d_item, basepath)
                         log_timestamp(l, f"CONVERT: converted item {original_item} to {d_item}\n")
                 else:
                     log_timestamp(l, f"CONVERT: {original_item} not converted, only markdown files get converted")
